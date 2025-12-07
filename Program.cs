@@ -65,12 +65,12 @@ namespace Core_WebAPI
                 app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("v1/swagger.json", "My API V1");
                 c.RoutePrefix = "swagger"; // optional: keeps swagger at /swagger
             });
 
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseAuthentication(); // ✅ Important: Authentication middleware
             app.UseAuthorization();
 
