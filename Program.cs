@@ -63,8 +63,12 @@ namespace Core_WebAPI
             // Configure the HTTP request pipeline.
             
                 app.UseSwagger();
-                app.UseSwaggerUI();
-            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = "swagger"; // optional: keeps swagger at /swagger
+            });
+
 
             app.UseHttpsRedirection();
             app.UseAuthentication(); // ✅ Important: Authentication middleware
