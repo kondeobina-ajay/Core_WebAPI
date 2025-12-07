@@ -31,9 +31,11 @@ namespace Core_WebAPI
 
 
             // Configure EF Core with SQL Server
-            builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-            );
+            //builder.Services.AddDbContext<AppDbContext>(options =>
+            //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+            //);
+
+            
 
             // JWT Authentication
             var key = Encoding.ASCII.GetBytes("YourSuperSecretKey123!"); // store in appsettings.json for production
@@ -55,6 +57,24 @@ namespace Core_WebAPI
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
+
+            var connectionString = Environment.GetEnvironmentVariable("RAILWAY_MYSQL_URL")
+    ?? "Server=mysql-production-fd81.up.railway.app;Port=52285;Database=railway;User=root;Password=dPvHpaNdPkBBzudVBHgicOsIhdwUmDrm;TreatTinyAsBoolean=true;SslMode=Preferred;";
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseMySql(
+                    connectionString,
+                    new MySqlServerVersion(new Version(8, 0, 33)),
+                    mySqlOptions =>
+                    {
+                        mySqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(10),
+                            errorNumbersToAdd: null
+                        );
+                    }
+                )
+            );
 
             var app = builder.Build();
             app.UseCors("AllowReact");
