@@ -3,6 +3,7 @@ using Core_WebAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using MySqlConnector;
 using System.Text;
 
 namespace Core_WebAPI
@@ -31,9 +32,22 @@ namespace Core_WebAPI
 
 
             // Configure EF Core with SQL Server
-            builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-            );
+            //builder.Services.AddDbContext<AppDbContext>(options =>
+            //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+            //);
+
+            try
+            {
+                var connStr = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
+                using var conn = new MySqlConnection(connStr);
+                conn.Open();
+                Console.WriteLine("✅ Successfully connected to Railway MySQL!");
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("❌ MySQL connection failed: " + ex.Message);
+            }
 
             // JWT Authentication
             var key = Encoding.ASCII.GetBytes("YourSuperSecretKey123!"); // store in appsettings.json for production
