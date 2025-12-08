@@ -121,6 +121,7 @@ C:\Users\Administrator\OneDrive\Desktop\Employee_Management_System\Core_WebAPI\C
 C:\Users\Administrator\OneDrive\Desktop\Employee_Management_System\Core_WebAPI\Core_WebAPI\obj\Debug\net8.0\Core_WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\OneDrive\Desktop\Employee_Management_System\Core_WebAPI\Core_WebAPI\obj\Debug\net8.0\Core_WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Administrator\OneDrive\Desktop\Employee_Management_System\Core_WebAPI\Core_WebAPI\obj\Debug\net8.0\Core_WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Administrator\OneDrive\Desktop\Employee_Management_System\Core_WebAPI\Core_WebAPI\obj\Debug\net8.0\Core_WebAPI.sourcelink.json
 C:\Users\Administrator\OneDrive\Desktop\Employee_Management_System\Core_WebAPI\Core_WebAPI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Administrator\OneDrive\Desktop\Employee_Management_System\Core_WebAPI\Core_WebAPI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Administrator\OneDrive\Desktop\Employee_Management_System\Core_WebAPI\Core_WebAPI\obj\Debug\net8.0\staticwebassets\msbuild.Core_WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
